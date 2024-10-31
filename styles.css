@@ -1,0 +1,102 @@
+/* Base button styles */
+.jira-copy-button {
+  cursor: pointer !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
+  padding: 4px !important;
+  border: none !important;
+  background: none !important;
+  vertical-align: middle !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  opacity: 0.7 !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+}
+
+.jira-copy-button:hover {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+.jira-copy-button:active {
+  transform: scale(0.95) !important;
+}
+
+/* Icon styles */
+.jira-copy-icon {
+  width: 16px !important;
+  height: 16px !important;
+  stroke-width: 2 !important;
+  color: #42526E !important;
+  display: inline-block !important;
+  stroke: currentColor !important;
+}
+
+[data-theme="dark"] .jira-copy-icon {
+  color: #B6C2CF !important;
+}
+
+/* Updated Tooltip styles for absolute top positioning */
+.jira-copy-button[title] {
+  position: relative !important;
+}
+
+/* Container for tooltip to handle positioning */
+.jira-copy-button[title]::before,
+.jira-copy-button[title]::after {
+  position: fixed !important;
+  left: 50% !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.2s ease !important;
+  pointer-events: none !important;
+}
+
+/* Tooltip arrow */
+.jira-copy-button[title]::before {
+  content: '' !important;
+  margin-left: -5px !important;
+  border: 5px solid transparent !important;
+  border-bottom: 5px solid #172B4D !important;
+  top: 0 !important;
+  z-index: 10001 !important;
+}
+
+/* Tooltip text */
+.jira-copy-button[title]::after {
+  content: attr(title) !important;
+  text-align: center !important;
+  min-width: fit-content !important;
+  max-width: 300px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  padding: 6px 12px !important;
+  border-radius: 4px !important;
+  background: #172B4D !important;
+  color: white !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  top: 24px !important;
+  z-index: 10001 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Show tooltip on hover */
+.jira-copy-button:hover::before,
+.jira-copy-button:hover::after {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .jira-copy-button[title]::before {
+  border-bottom-color: #2C3E5D !important;
+}
+
+[data-theme="dark"] .jira-copy-button[title]::after {
+  background-color: #2C3E5D !important;
+}
