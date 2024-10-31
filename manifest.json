@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "JIRA Link Copier",
   "version": "1.0",
-  "description": "Copy JIRA tickets with customizable hyperlink format",
+  "description": "Quick copy JIRA ticket links with customizable format. Perfect for sharing tickets in emails and chats.",
   "permissions": [
     "storage",
     "clipboardWrite"

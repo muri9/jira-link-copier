@@ -3,9 +3,9 @@ const DEFAULT_FORMAT = '$html:<a href="$url">$ticket:$title</a>';
 
 // Sample data for preview
 const sampleData = {
-  ticket: 'PROJ-123',
-  title: 'Sample JIRA Issue',
-  url: 'https://jira.company.com/browse/PROJ-123'
+    ticket: 'HADOOP-19322',
+    title: 'Upgrade hadoop3 docker scripts to 3.4.1',
+    url: 'https://issues.apache.org/jira/browse/HADOOP-19322'
 };
 
 // Initialize the options page
