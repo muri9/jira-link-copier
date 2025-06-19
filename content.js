@@ -103,30 +103,11 @@
 
   // Improved title selectors with priority order
   const TITLE_SELECTORS = [
-    // Modern JIRA
-    {
-      selector: '[data-testid="issue.views.issue-base.foundation.summary.heading"]',
-      getText: (el) => el.textContent.trim()
-    },
-    // Modern JIRA (alternative)
-    {
-      selector: 'h1[data-test-id="issue.views.issue-base.foundation.summary.heading"]',
-      getText: (el) => el.textContent.trim()
-    },
     // Classic JIRA
     {
       selector: '#summary-val',
       getText: (el) => el.textContent.trim()
     },
-    // Legacy JIRA
-    {
-      selector: '.issue-header-content h1',
-      getText: (el) => {
-        const text = el.textContent.trim();
-        const match = text.match(/^[A-Z]+-\d+\s*[-:]\s*(.+)$/);
-        return match ? match[1].trim() : text;
-      }
-    }
   ];
 
   function showJiraNotification(content) {
@@ -221,12 +202,6 @@
       // Classic JIRA key
       '#key-val',
       '#issuekey-val',
-      // Modern JIRA project key
-      //'[data-testid="issue.views.issue-base.foundation.summary.heading-container"] a',
-      // Issue link
-      //'a.issue-link[data-issue-key]',
-      // Breadcrumb
-      //'[data-testid="issue.views.issue-base.foundation.breadcrumbs.breadcrumb-current-issue-container"]'
     ];
 
     for (const selector of selectors) {
@@ -340,7 +315,8 @@
             return node.querySelector && (
               node.querySelector(TITLE_SELECTORS[0].selector) ||
               node.querySelector('#key-val') ||
-              node.matches('[data-issue-key]')
+              node.querySelector('#issuekey-val')
+              //|| node.matches('[data-issue-key]')
             );
           }
           return false;

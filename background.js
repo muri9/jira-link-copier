@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.get('format', (data) => {
       if (!data.format) {
         chrome.storage.sync.set({
-          format: '$html:<a href="$url">$ticket:$title</a>'
+          format: '$html:<a href="$url">$ticket</a> $title'
         });
       }
     });
