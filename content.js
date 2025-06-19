@@ -215,7 +215,7 @@
 
   function extractTicketInfo() {
     const ticket = getTicketId();
-    if (!ticket || ticket === lastTicketId) return null;
+    if (!ticket) return null;
     
     const title = getIssueTitle();
     if (!title) return null;
@@ -294,6 +294,7 @@
 
   function init() {
     const ticketInfo = extractTicketInfo();
+    console.info('Copier ticketInfo', ticketInfo)
     if (!ticketInfo) return;
     addCopyButton(ticketInfo);
   }

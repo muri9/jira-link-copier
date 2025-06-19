@@ -2,7 +2,7 @@
 (function() {
     // Configuration
     const CONFIG = {
-      MAX_ATTEMPTS: 15,
+      MAX_ATTEMPTS: 20,
       OBSERVER_TIMEOUT: 2000,
       DEFAULT_FORMAT: '$html:<a href="$url">$ticket:$title</a>'
     };
@@ -17,24 +17,29 @@
     // Quick URL pattern checks
     function shouldInitialize() {
       // Check for JIRA paths
-      if (!/browse\/|issues?\/|selectedIssue=/.test(window.location.href)) {
+      let browseUrl = /browse/.test(window.location.href);
+      let issuesUrl = /issues/.test(window.location.href);
+      let boardUrl = /RapidBoard/.test(window.location.href)
+      if (!browseUrl && !boardUrl && !issuesUrl) {
         return false;
       }
-  
-      // Check for ticket pattern
-      if (!/[A-Z]+-\d+/.test(window.location.href)) {
-        return false;
+
+      if (browseUrl) {
+          // Check for ticket pattern
+          if (!/[A-Z]+-\d+/.test(window.location.href)) {
+            return false;
+          }
       }
-  
+
       return true;
     }
   
     // Fast check for JIRA indicators
     function quickJiraCheck() {
       return (
-          //document.querySelector('[data-issue-key]') ||
           document.getElementById('key-val') ||
-          document.getElementById('issuekey-val')
+          document.getElementById('issuekey-val') ||
+          document.querySelector('[data-issue-key]')
           //|| document.querySelector('[data-testid*="issue"]')
       ) !== null;
     }
@@ -90,6 +95,7 @@
   
     // Stop observer
     function stopObserver() {
+      console.info('Copier stop observer');
       if (state.observer) {
         state.observer.disconnect();
         state.observer = null;
