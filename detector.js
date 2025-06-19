@@ -2,7 +2,7 @@
 (function() {
     // Configuration
     const CONFIG = {
-      MAX_ATTEMPTS: 3,
+      MAX_ATTEMPTS: 15,
       OBSERVER_TIMEOUT: 2000,
       DEFAULT_FORMAT: '$html:<a href="$url">$ticket:$title</a>'
     };
@@ -17,7 +17,7 @@
     // Quick URL pattern checks
     function shouldInitialize() {
       // Check for JIRA paths
-      if (!/browse\/|issues?\/|selectedIssue=/.test(window.location.pathname)) {
+      if (!/browse\/|issues?\/|selectedIssue=/.test(window.location.href)) {
         return false;
       }
   
@@ -32,9 +32,10 @@
     // Fast check for JIRA indicators
     function quickJiraCheck() {
       return (
-        document.querySelector('[data-issue-key]') || 
-        document.getElementById('key-val') ||
-        document.querySelector('[data-testid*="issue"]')
+          //document.querySelector('[data-issue-key]') ||
+          document.getElementById('key-val') ||
+          document.getElementById('issuekey-val')
+          //|| document.querySelector('[data-testid*="issue"]')
       ) !== null;
     }
   

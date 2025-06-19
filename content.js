@@ -197,7 +197,7 @@
     if (urlMatch) return urlMatch[0];
 
     // Try breadcrumb or issue key
-    const keyElement = document.querySelector('#key-val, [data-issue-key]');
+    const keyElement = document.querySelector('#key-val, #issuekey-val');
     if (keyElement) {
       return keyElement.getAttribute('data-issue-key') || keyElement.textContent.trim();
     }
@@ -218,14 +218,15 @@
 
   function findTicketTextElement() {
     const selectors = [
-      // Modern JIRA project key
-      '[data-testid="issue.views.issue-base.foundation.summary.heading-container"] a',
       // Classic JIRA key
       '#key-val',
+      '#issuekey-val',
+      // Modern JIRA project key
+      //'[data-testid="issue.views.issue-base.foundation.summary.heading-container"] a',
       // Issue link
-      'a.issue-link[data-issue-key]',
+      //'a.issue-link[data-issue-key]',
       // Breadcrumb
-      '[data-testid="issue.views.issue-base.foundation.breadcrumbs.breadcrumb-current-issue-container"]'
+      //'[data-testid="issue.views.issue-base.foundation.breadcrumbs.breadcrumb-current-issue-container"]'
     ];
 
     for (const selector of selectors) {
@@ -248,7 +249,7 @@
     return {
       ticket,
       title,
-      url: window.location.href
+      url: window.location.origin + '/browse/' + ticket
     };
   }
 
