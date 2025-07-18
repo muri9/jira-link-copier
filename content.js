@@ -174,7 +174,7 @@
 
   function getTicketId() {
     // Try URL first
-    const urlMatch = window.location.pathname.match(/[1-9A-Z]+-\d+/);
+    const urlMatch = window.location.pathname.match(/[0-9A-Z]+-\d+/);
     if (urlMatch) return urlMatch[0];
 
     // Try breadcrumb or issue key
