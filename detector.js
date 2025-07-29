@@ -13,25 +13,29 @@
       initAttempts: 0,
       observer: null
     };
-  
+
     // Quick URL pattern checks
     function shouldInitialize() {
       // Check for JIRA paths
       let browseUrl = /browse/.test(window.location.href);
-      let issuesUrl = /issues/.test(window.location.href);
-      let boardUrl = /RapidBoard/.test(window.location.href)
-      if (!browseUrl && !boardUrl && !issuesUrl) {
-        return false;
-      }
-
       if (browseUrl) {
-          // Check for ticket pattern
-          if (!/[A-Z]+-\d+/.test(window.location.href)) {
-            return false;
-          }
+        // Check for ticket pattern
+        if (/[0-9A-Z]+-\d+/.test(window.location.href)) {
+          return true;
+        }
       }
 
-      return true;
+      let boardUrl = /RapidBoard/.test(window.location.href)
+      if (boardUrl) {
+        return true;
+      }
+
+      //let issuesUrl = /issues/.test(window.location.href);
+      //if (issuesUrl) {
+      //  return true;
+      //}
+
+      return false;
     }
   
     // Fast check for JIRA indicators

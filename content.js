@@ -206,7 +206,7 @@
 
     for (const selector of selectors) {
       const element = document.querySelector(selector);
-      if (element && element.textContent.match(/[A-Z]+-\d+/)) {
+      if (element && element.textContent.match(/[0-9A-Z]+-\d+/)) {
         return element;
       }
     }
