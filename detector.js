@@ -30,10 +30,10 @@
         return true;
       }
 
-      //let issuesUrl = /issues/.test(window.location.href);
-      //if (issuesUrl) {
-      //  return true;
-      //}
+      let issuesUrl = /issues/.test(window.location.href);
+      if (issuesUrl) {
+        return true;
+      }
 
       return false;
     }
