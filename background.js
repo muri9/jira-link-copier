@@ -9,5 +9,5 @@ chrome.runtime.onInstalled.addListener(() => {
       }
     });
     // Open options page on install
-    chrome.runtime.openOptionsPage();
+    //chrome.runtime.openOptionsPage();
   });
