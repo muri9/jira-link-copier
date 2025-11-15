@@ -25,4 +25,4 @@ The following variables are available for custom formats:
 - Use `$html:` prefix for HTML format
 
 ## Default Format
-`$html:<a href="$url">$ticket:$title</a>`
+`$html:<a href="$url">$ticket</a> $title`
